@@ -1,18 +1,18 @@
 # Use the official Node.js image as the base image for building the React app
-FROM node:14 AS build
+  FROM node:14 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+  COPY package*.json ./
 
 # Install the dependencies
 RUN npm install
 
 # Copy the rest of the application code to the working directory
-COPY . .
-
+    COPY . .
+  
 # Build the React app
 RUN npm run build
 
