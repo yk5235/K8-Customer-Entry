@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-customer
+  labels:
+    app: frontend-customer
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-customer
+  template:
+    metadata:
+      labels:
+        app: frontend-customer
+    spec:
+      containers:
+      - name: frontend-customer
+        image: sin.ocir.io/idxkccw2srke/frontend-customer:v1
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-customer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: frontend-customer

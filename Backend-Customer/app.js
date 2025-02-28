@@ -1,7 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 const PORT = 3000;
@@ -13,7 +16,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // MongoDB connection
-mongoose.connect('mongodb://host.docker.internal:27017/customerDB', {
+    //'mongodb://mongo:password@mongodb:27017/customerDB?authSource=admin'
+//const mongoUri = 'mongodb://mongo:password@mongodb:27017/customerDB?authSource=admin';    
+const mongoUri = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}?authSource=admin`;
+mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
