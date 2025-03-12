@@ -57,9 +57,40 @@ app.post('/customers', async (req, res) => {
 });
 
 // Get all customer entries
+/**
 app.get('/customers', async (req, res) => {
     try {
         const customers = await Customer.find();
+        res.status(200).send(customers);
+    } catch (error) {
+        console.error('Error fetching customers:', error);
+        res.status(500).send(error);
+    }
+});
+**/
+
+// Get all customer entries
+app.get('/customers', async (req, res) => {
+    try {
+        // Static data to be sent as response
+        const customers = [
+            {
+                _id: '1',
+                name: 'John Doe',
+                address: '123 Main St',
+                country: 'USA',
+                gender: 'Male',
+                age: 30
+            },
+            {
+                _id: '2',
+                name: 'Jane Smith',
+                address: '456 Elm St',
+                country: 'Canada',
+                gender: 'Female',
+                age: 25
+            }
+        ];
         res.status(200).send(customers);
     } catch (error) {
         console.error('Error fetching customers:', error);

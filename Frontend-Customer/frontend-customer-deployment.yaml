@@ -26,14 +26,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-customer
+  name: frontend-customer-svc
   annotations:
     service.beta.kubernetes.io/oci-load-balancer-type: "lb"
     service.beta.kubernetes.io/oci-load-balancer-subnet1: "ocid1.subnet.oc1.ap-singapore-1.aaaaaaaarv5xdkoxqhhvzbxqzqwn5kkik2pvxnyg3lvf6jb43zl5w6euvqea"
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
+  - protocol: TCP
+    port: 80
     targetPort: 80
   selector:
     app: frontend-customer

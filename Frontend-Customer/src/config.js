@@ -1,5 +1,5 @@
 const config = {
-  backendUrl: 'http://localhost:3000'
+  backendUrl: `http://${process.env.BACKEND_CUSTOMER_SVC_SERVICE_HOST}:3000`
 };
 
 export default config;
