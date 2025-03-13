@@ -51,7 +51,6 @@ app.get('/', (req, res) => {
 });
 
 // Create a new customer entry
-/**
 app.post('/customers', async (req, res) => {
     try {
         const customer = new Customer(req.body);
@@ -62,7 +61,7 @@ app.post('/customers', async (req, res) => {
         res.status(400).send(error);
     }
 });
-**/
+
 
 // Get all customer entries
 
@@ -77,6 +76,7 @@ app.get('/customers', async (req, res) => {
 });
 
 // Get all customer entries
+/**
 app.get('/customers', async (req, res) => {
     try {
         console.log('Fetching customers...');
@@ -105,6 +105,7 @@ app.get('/customers', async (req, res) => {
         res.status(500).send(error);
     }
 });
+**/
 
 // Get a customer entry by ID
 app.get('/customers/:id', async (req, res) => {
