@@ -15,7 +15,7 @@ const App = () => {
 
   const fetchCustomers = async () => {
     try {
-      const response = await fetch(`${config.backendUrl}/customers`);
+      const response = await fetch(`/api/customers`);
       const data = await response.json();
       setCustomers(data);
       console.log('Fetched customers:', data);
@@ -27,7 +27,7 @@ const App = () => {
   const addCustomer = async (customer) => {
     try {
       console.log('Adding customer:', customer);
-      const response = await fetch(`${config.backendUrl}/customers`, {
+      const response = await fetch(`/api/customers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ const App = () => {
   const updateCustomer = async (customer) => {
     try {
       console.log('Updating customer:', customer);
-      const response = await fetch(`${config.backendUrl}/customers/${customer._id}`, {
+      const response = await fetch(`/api/customers/${customer._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
@@ -64,7 +64,7 @@ const App = () => {
   const deleteCustomer = async (id) => {
     try {
       console.log('Deleting customer with ID:', id);
-      await fetch(`${config.backendUrl}/customers/${id}`, {
+      await fetch(`/api/customers/${id}`, {
         method: 'DELETE'
       });
       setCustomers(customers.filter((customer) => customer._id !== id));
