@@ -17,8 +17,12 @@ app.use(cors());
 
 // MongoDB connection
     //'mongodb://mongo:password@mongodb:27017/customerDB?authSource=admin'
-//const mongoUri = 'mongodb://mongo:password@mongodb:27017/customerDB?authSource=admin';    
-const mongoUri = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}?authSource=admin`;
+const mongoUri = 'mongodb://mongo:password@mongodb:27017/customerDB?authSource=admin';    
+//const mongoUri = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}?authSource=admin`;
+
+console.log(`MONGO_USERNAME: ${process.env.MONGO_USERNAME}`);
+console.log(`MONGO_PASSWORD: ${process.env.MONGO_PASSWORD}`);
+
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
