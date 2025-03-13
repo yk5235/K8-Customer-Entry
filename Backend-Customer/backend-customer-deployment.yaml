@@ -32,11 +32,11 @@ spec:
               name: mongo-secret
               key: password
         - name: MONGO_HOST
-          value: mongodb
+          value: "mongodb"
         - name: MONGO_PORT
           value: "27017"
         - name: MONGO_DB
-          value: customerDB
+          value: "customerDB"
       imagePullSecrets:
       - name: regcred
 ---

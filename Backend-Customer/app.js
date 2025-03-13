@@ -17,15 +17,17 @@ app.use(cors());
 
 // MongoDB connection
     //'mongodb://mongo:password@mongodb:27017/customerDB?authSource=admin'
-const mongoUri = 'mongodb://mongo:password@mongodb:27017/customerDB?authSource=admin';    
-//const mongoUri = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}?authSource=admin`;
+//const mongoUri = 'mongodb://mongo:password@mongodb:27017/customerDB?authSource=admin';    
+const mongoUri = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}?authSource=admin`;
 
+console.log(`mongoUri: ${mongoUri}`);
 console.log(`MONGO_USERNAME: ${process.env.MONGO_USERNAME}`);
 console.log(`MONGO_PASSWORD: ${process.env.MONGO_PASSWORD}`);
 
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 30000
 }).then(() => {
     console.log('Connected to MongoDB');
 }).catch((error) => {
@@ -49,6 +51,7 @@ app.get('/', (req, res) => {
 });
 
 // Create a new customer entry
+/**
 app.post('/customers', async (req, res) => {
     try {
         const customer = new Customer(req.body);
@@ -59,9 +62,10 @@ app.post('/customers', async (req, res) => {
         res.status(400).send(error);
     }
 });
+**/
 
 // Get all customer entries
-/**
+
 app.get('/customers', async (req, res) => {
     try {
         const customers = await Customer.find();
@@ -71,11 +75,11 @@ app.get('/customers', async (req, res) => {
         res.status(500).send(error);
     }
 });
-**/
 
 // Get all customer entries
 app.get('/customers', async (req, res) => {
     try {
+        console.log('Fetching customers...');
         // Static data to be sent as response
         const customers = [
             {
