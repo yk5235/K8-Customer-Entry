@@ -48,7 +48,7 @@ metadata:
     service.beta.kubernetes.io/oci-load-balancer-type: "lb"
     service.beta.kubernetes.io/oci-load-balancer-subnet1: "ocid1.subnet.oc1.ap-singapore-1.aaaaaaaarv5xdkoxqhhvzbxqzqwn5kkik2pvxnyg3lvf6jb43zl5w6euvqea"
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 3000
     targetPort: 3000
