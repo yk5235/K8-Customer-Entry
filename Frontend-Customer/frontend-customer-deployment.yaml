@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend-customer
-        image: sin.ocir.io/idxkccw2srke/frontend-customer:v1
+        image: sin.ocir.io/idxkccw2srke/frontend-test:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 80

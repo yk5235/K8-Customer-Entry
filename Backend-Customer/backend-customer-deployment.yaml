@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend-customer
-        image: sin.ocir.io/idxkccw2srke/backend-customer:v1
+        image: sin.ocir.io/idxkccw2srke/backend-test:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
